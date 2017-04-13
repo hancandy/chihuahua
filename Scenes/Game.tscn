@@ -1,0 +1,221 @@
+[gd_scene load_steps=24 format=1]
+
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Chihuahua.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Chihuahua/T_ChihuahuaHeadAngry_D.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Chihuahua/T_ChihuahuaHeadAngry2_D.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Chihuahua/T_ChihuahuaHeadHappy_D.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Chihuahua/T_ChihuahuaHeadHappy2_D.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Chihuahua/T_ChihuahuaHeadNeutral_D.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Chihuahua/T_ChihuahuaHeadNeutral2_D.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Chihuahua/T_ChihuahuaTailRight_D.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Chihuahua/T_ChihuahuaBody_D.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sounds/S_Chihuahua_Angry.wav" type="Sample" id=11]
+[ext_resource path="res://Assets/Sounds/S_Chihuahua_Happy.wav" type="Sample" id=12]
+[ext_resource path="res://Assets/Chihuahua/T_Hand_D.png" type="Texture" id=13]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=14]
+[ext_resource path="res://Prefabs/UI.tscn" type="PackedScene" id=15]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 152.646, 154.607 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 41.4647, 254.688 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 162.221, 172.045 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 76.6228, 226.31 )
+
+[sub_resource type="Animation" id=5]
+
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.5, 1 ), "transitions":FloatArray( 1, 1, 1 ), "update":1, "values":[ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ) ] }
+
+[sub_resource type="Animation" id=6]
+
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Tail:transform/rot")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.5, 1 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.0, 39.4883, 1.96177 ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head:texture")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0.00451469, 0.5, 1 ), "transitions":FloatArray( 1, 1, 1 ), "update":1, "values":[ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ) ] }
+
+[sub_resource type="Animation" id=7]
+
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.5, 1 ), "transitions":FloatArray( 1, 1, 1 ), "update":1, "values":[ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 7 ) ] }
+
+[sub_resource type="SampleLibrary" id=8]
+
+samples/Angry = { "db":0.0, "pitch":1.0, "sample":ExtResource( 11 ) }
+samples/Happy = { "db":0.0, "pitch":1.0, "sample":ExtResource( 12 ) }
+
+[node name="Root" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="Chihuahua" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 518.525, 327.093 )
+transform/scale = Vector2( 0.5, 0.5 )
+script/script = ExtResource( 2 )
+
+[node name="Area1" type="Area2D" parent="Chihuahua"]
+
+transform/pos = Vector2( -182.388, -223.086 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 30.6404, 54.258 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chihuahua/Area1"]
+
+transform/pos = Vector2( 30.6404, 54.258 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Area2" type="Area2D" parent="Chihuahua"]
+
+transform/pos = Vector2( 58.7863, -55.7716 )
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -6.69421, -17.0119 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chihuahua/Area2"]
+
+transform/pos = Vector2( -6.69421, -17.0119 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Area3" type="Area2D" parent="Chihuahua"]
+
+transform/pos = Vector2( -58.7862, 52.7569 )
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -93.4551, 147.719 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chihuahua/Area3"]
+
+transform/pos = Vector2( -93.4551, 147.719 )
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Area4" type="Area2D" parent="Chihuahua"]
+
+transform/pos = Vector2( 55.7716, 55.7715 )
+input/pickable = true
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 123.07, -147.631 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chihuahua/Area4"]
+
+transform/pos = Vector2( 123.07, -147.631 )
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Animation" type="Node2D" parent="Chihuahua"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Chihuahua/Animation"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/Angry = SubResource( 5 )
+anims/Happy = SubResource( 6 )
+anims/Neutral = SubResource( 7 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="Tail" type="Sprite" parent="Chihuahua/Animation"]
+
+transform/pos = Vector2( 187.378, -270.672 )
+transform/rot = 4.07445
+texture = ExtResource( 9 )
+offset = Vector2( 55.304, -76.0163 )
+
+[node name="Body" type="Sprite" parent="Chihuahua/Animation"]
+
+texture = ExtResource( 10 )
+
+[node name="Head" type="Sprite" parent="Chihuahua/Animation"]
+
+transform/pos = Vector2( -113.051, -134.153 )
+texture = ExtResource( 7 )
+
+[node name="SamplePlayer2D" type="SamplePlayer2D" parent="Chihuahua"]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 8 )
+config/pitch_random = 0.0
+
+[node name="Player" type="Sprite" parent="."]
+
+transform/pos = Vector2( 16.6731, 27.6418 )
+transform/scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 13 )
+offset = Vector2( -20.8414, -34.5522 )
+script/script = ExtResource( 14 )
+
+[node name="UI" parent="." instance=ExtResource( 15 )]
+
+
